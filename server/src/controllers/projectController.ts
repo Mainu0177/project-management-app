@@ -22,7 +22,7 @@ export const createProject = async (
 ): Promise<void> =>{
     const {name, description, startDate, endDate} = req.body;
     try {
-        console.log("here is name", req.body)
+        console.log("where is name", req.body)
         const newProject = await prisma.project.create({
             data: {
                 name,
