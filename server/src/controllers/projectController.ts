@@ -33,6 +33,7 @@ export const createProject = async (
         });
         res.status(201).json(newProject)
     } catch (error: any) {
+        // console.log("error", error)
         res.status(500).json({ message: `Error creating a project: ${error.message}`})
     }
 }

@@ -1,27 +1,29 @@
 import express from "express";
 import dotenv from "dotenv";
-// import bodyParser from "body-parser";
+import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+
 // ROUTE IMPORTS
 import projectRoutes from "./routes/projectRoutes"
+import taskRoutes from "./routes/taskRoutes"
 
 
 // CONFIGARATIONS
 dotenv.config();
 const app = express();
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin"}));
-app.use(cors());
 app.use(morgan("common"));
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 
-// app.use(bodyParser.json());
 
 app.get("/", (req, res) =>{
     res.send("this is home route");
@@ -29,6 +31,7 @@ app.get("/", (req, res) =>{
 
 //ROUTE
 app.use("/projects", projectRoutes)
+app.use("/tasks", taskRoutes)
 
 // SERVER
 const port = process.env.PORT || 3000;
