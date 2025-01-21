@@ -1,5 +1,7 @@
+
 import Header from '@/components/Header';
-import { useState } from 'react'
+import { Clock, Grid3X3, List, Table } from 'lucide-react';
+// import { useState } from 'react';
 
 type Props = {
     activeTab: string;
@@ -7,13 +9,43 @@ type Props = {
 }
 
 const projectHeader = ({activeTab, setActiveTab}: Props) => {
-    const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false)
+    // const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false)
 
   return ( 
     <div className='px-4 lx:px-6'>
     {/* MODAL NEW PROJECT */}
     <div className='pb-6 pt-6 lg:pb-4 lg:pt-8'>
         <Header name="Product Design Development" />
+    </div>
+
+    {/* TABS */}
+    <div className='flex flex-wrap-reverse gap-2 border-y border-gray-200 pb-[8px] pt-2 dark:border-stroke:dark md:items-center'>
+        <div className='flex items-center gap-2 md:gap-4'>
+            <TabButton
+            name="Board"
+            icon={<Grid3X3 className='h-5 w-5' />}
+            setActiveTab={setActiveTab}
+            activeTab={activeTab}
+            />
+            <TabButton
+            name="List"
+            icon={<List className='h-5 w-5' />}
+            setActiveTab={setActiveTab}
+            activeTab={activeTab}
+            />
+            <TabButton
+            name="Timeline"
+            icon={<Clock className='h-5 w-5' />}
+            setActiveTab={setActiveTab}
+            activeTab={activeTab}
+            />
+            <TabButton
+            name="Table"
+            icon={<Table className='h-5 w-5' />}
+            setActiveTab={setActiveTab}
+            activeTab={activeTab}
+            />
+        </div>
     </div>
   </div>
   )
